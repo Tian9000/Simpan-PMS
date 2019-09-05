@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var helpers = require('../helpers/utility')
+const express = require('express');
+const router = express.Router();
+const helpers = require('../helpers/utility')
 
 module.exports = function (db) {
 

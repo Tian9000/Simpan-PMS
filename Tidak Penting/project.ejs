@@ -1,0 +1,105 @@
+<% include ../partials/header %>
+<% include ../partials/navbar %>
+
+
+<div class="container">
+  <div class="jumbotron mt-3">
+    <h1 id="header" class="text-left pt-1"><b>Projects</b></h1>
+    <h2><b>Filters</b></h2>
+    <br>
+    <form class="" action="/" method="GET">
+      <div class="form-group row">
+        <label for="inputID" class="col-sm-2 col-form-label">
+          <input class="form-check-input" name="MyID" type="checkbox" id="invalidCheck2">ID
+        </label>
+        <div class="col-sm-6">
+          <input type="ID" class="form-control" name="ID" id="ID" placeholder="ID">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputName" class="col-sm-2 col-form-label">
+          <input class="form-check-input" name="MyName" type="checkbox" id="invalidCheck2">Name
+        </label>
+        <div class="col-sm-6">
+          <input type="string" class="form-control" name="Name" id="Name" placeholder="Name">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputMember" class="col-sm-2 col-form-label">
+          <input class="form-check-input" name="MyMember" type="checkbox" id="invalidCheck2">Member
+        </label>
+        <div class="col-sm-6">
+          <select id="Member" class="form-control" name="Member">
+            <option>Choose the Member ...</option>
+            <option></option>
+            <option></option>
+          </select>
+        </div>
+      </div>
+      <button class="btn btn-primary">Search</button>
+    </form>
+
+    <!-- ============= option ================= -->
+    <br>
+    <h2>Option</h2>
+    <div class="form-group">
+      <div class="form-group row">
+        <legend class="col-form-label col-sm-2 pt-0">Columns</legend>
+        <div class="col-sm-10">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="oid" id="check1" value="true"
+              <%= projectoption.oid ? 'checked':'' %>>
+            <label class="form-check-label" for="check1">
+              ID
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="oname" id="check2" value="true"
+              <%= projectoption.oname ? 'checked':'' %>>
+            <label class="form-check-label" for="check2">
+              Name
+            </label>
+          </div>
+          <div class="form-check disabled">
+            <input class="form-check-input" type="checkbox" name="omember" id="check3" value="true"
+              <%= projectoption.omember ? 'checked':'' %>>
+            <label class="form-check-label" for="check3">
+              Members
+            </label>
+          </div>
+        </div>
+
+        <!-- ============= table ================= -->
+
+        <button type="submit" class="btn btn-primary">Apply</button>
+        <br>
+        <br>
+        </fieldset>
+        <table class="table" id="mydatatable">
+          <thead>
+            <tr>
+              <% if(projectoption.oid){%><th scope="col-sm-10" class="ID">ID</th><%}%>
+                <% if(projectoption.oname){%><th scope="col-sm-10" class="ID">Name</th><%}%>
+                <% if(projectoption.omember){%><th scope="col-sm-10" class="ID">Member</th><%}%>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% data.forEach((item) => { %>
+            <tr>
+              <% if(projectoption.oid){%><td scope="row" class="ID">
+                <a href="/projects/overview/<%= item.projectid%>"><%= item.projectid %> </a> </td><%}%>
+                <% if(projectoption.oname){%> <td class="Name"><%= item.name %></td><%}%>
+                
+                <% if(projectoption.omember){%> <td><%= item.firstname %> <%=item.lastname%></td><%}%>
+              <td><a href="/projects/edit/<%= item.projectid %>" class="btn btn-success">Edit</a>
+              <a href="/projects/delete/<%= item.projectid %>" class="btn btn-danger"
+                onclick="return confirm('Yakin nih mau di Delete bro???');">Delete</a></td>
+            </tr>
+            <% }) %>
+            </tbody>
+        </table>
+        <a href="/projects/add"><button type="submit" class="btn btn-primary">Add</button></a>
+      </div>
+    </div>
+  </div>

@@ -1,63 +1,53 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<% include ../partials/header %>
+<% include ../partials/navbar %>
+<% include ../partials/footer %>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>CHALLENGE20#3</title>
+    <title>Edit</title>
     <div class="container">
-      
-    
-    <h1>Edit Data</h1>
+      <div class="jumbotron mt-4">
+          <form method="POST">
+              <h1><b>Edit Project</h1></b><br>
+              <div class="form-group row">
+                  <label for="inputid" class="col-sm-2 col-form-label">ID</label>
+                  <div class="col-sm-4">
+                      <input type="id" class="form-control" name="id" id="id" placeholder="ID"
+                      value="<%= project.projectid %>" disabled>
+                  </div>
+              </div>
   
-  <form class=""  method="post">
-      
-    <div class="form-group">
-      <label for="id">ID</label>
-      <input type="text" class="form-control" name="id"  placeholder="ID" >
-    </div>
-    <div class="form-group">
-      <label for="string">STRING</label>
-      <input type="text" class="form-control" name="string2"  placeholder="String">
-    </div>
-    <div class="form-group">
-      <label for="integer">Integer</label>
-      <input type="text" class="form-control" name="integer2" placeholder="Integer">
-    </div>
-    <div class="form-group">
-      <label for="float">Float</label>
-      <input type="text" class="form-control" name="float2"  placeholder="Float">
-    </div>
-    <div class="form-group">
-        <label for="date">Date</label>
-      <input type="date" class="form-control" name="date2"  id="date2" placeholder="MM/DD/YYY">
+              <div class="form-group row">
+                  <label for="inputPassword" class="col-sm-2 col-form-label">Project Name</label>
+                  <div class="col-sm-4">
+                      <input type="text" class="form-control" id="projectname" placeholder="Project Name"
+                          name="projectname" value="<%= project.name %>"> 
+                  </div>
+              </div>
+              
+              <% let first = true; users.forEach((item) => { %>
+                <div class="form-group row">
+                    <% if(first){first = false; %>
+                    <div class="col-sm-2">Members</div>
+                    <% } else { %>
+                    <div class="col-sm-2"></div>
+                    <% } %>
+                    <div class="col-sm-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="users" value="<%= `${item.userid}` %>"
+                                <%= members.includes(item.userid) ? ' checked' : '' %>>
+                            <label class="form-check-label" for="gridCheck1">
+                                <%= `${item.firstname} ${item.lastname}` %>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
+              <button class="btn btn-primary" type="submit">Save</button>
+              <a href="/projects" class="btn btn-warning">Cancel</a>
+          </form>
       </div>
-    <div class="form-group">
-      <label for="boolean">Boolean</label>
-      <select name="boolean2" class="form-control" id="boolean2"  type="boolean">
-        <!-- <option>Choose the boolean ...</option> -->
-        <option>true</option>
-        <option>false</option>
-        
-      </select>
-    </div>
-    <button type="submit" class="btn btn-primary">Update</button>
-    
-   </form>
-      
-
-    </div>
   </div>
-</div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+
+   
 </html>
 

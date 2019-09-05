@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://code.jquery.com/jqudeleteery-3.3.1.js">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Project Management System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+              <a href="/projects"><button class="nav-link btn btn-link" >Projects</button></a>
+              <!-- <a class="nav-link" href="#">Project<span class="sr-only">(current)</span></a> -->
+            </li>
+            <li class="nav-item">
+            <a href="/profile"><button class="nav-link btn btn-link">Profile</button></a>
+            </li>
+            
+          </ul>
+          
+           <a href="/"><button class="btn btn-outline-success my-2 my-sm-0">Keluar Dulu Ahh...</button></a>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-2">
+                <nav class="nav flex-column">
+                    <a class="nav-link sidebar == 1? 'bg-dark text-white':'text-dark'"
+                        href=/projects/overview/ id >Overview </a> <a
+                        class="nav-link sidebar == 4? 'bg-dark text-white':'text-dark'"
+                        href=/projects/activity/activity id >Activity </a> <a
+                        class="nav-link  sidebar == 2? 'bg-dark text-white':'text-dark'"
+                        href=/projects/members/ id >Members </a> <a
+                        class="nav-link sidebar == 3? 'bg-dark text-white':'text-dark'"
+                        href=/projects/issues/ id >Issues </a> </nav> </div>
+      
+
+  
+
+  <title>PMS</title>
+
+</head>
+
+
+<div class="col-10">
+  <div class="jumbotron mt-3">
+      <div class="container">
+          <h1>Edit Members</h1>
+          <hr>
+          <div>
+              <form action="" method="POST">
+                  <div class="form-group row">
+                      <label for="id" class="col-sm-2 form-check-label">Id</label>
+                      <div class="col-sm-9">
+                          <input type="text" class="form-control" id="id" name="id" placeholder="Id"
+                              value="<%= data.id %>" disabled>
+                      </div>
+                  </div>
+
+                  <div class="form-group row">
+                      <label for="name" class="col-sm-2 form-check-label">Name</label>
+                      <div class="col-sm-9">
+                          <input type="text" class="form-control" id="name" name="name" placeholder="name"
+                              value="<%= data.firstname %>" disabled>
+                      </div>
+                  </div>
+
+                  <div class="form-group row">
+                      <label for="position" class="col-sm-2 form-check-label">Position</label>
+                      <div class="col-sm-9">
+                          <select name="member" name="member" class="form-control">
+                              <option value="<%= data.role %>">
+                                  <%= data.role %>
+                              </option>
+                              <% for(let i=0; i<data2.length; i++){ %>
+                              <option value="<%= data2[i].position%>">
+                                  <%= data2[i].position %>
+                              </option>
+                              <%}%>
+                      </select>
+                  </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Edit</button>
+              <a href="/projects/members/<%= id %>" class="btn btn-warning">Cancel</a>
+              </form>
+
+
+          </div>
+      </div>
+  </div>
+  </br></br></br>
+
+
+
+    

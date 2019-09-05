@@ -58,53 +58,24 @@
         <hr class="my-2">
       </form>
 
-      <br>
-      <h2>Option</h2>
-      <div class="form-group">
-        <div class="form-group row">
-          <legend class="col-form-label col-sm-2 pt-0">Columns</legend>
-          <div class="col-sm-10">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="gridRadios" id="gridRadios1" value="option1">
-              <label class="form-check-label" for="gridRadios1">
-                ID
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="gridRadios" id="gridRadios2" value="option2">
-              <label class="form-check-label" for="gridRadios2">
-                Name
-              </label>
-            </div>
-            <div class="form-check disabled">
-              <input class="form-check-input" type="checkbox" name="gridRadios" id="gridRadios3" value="option3">
-              <label class="form-check-label" for="gridRadios3">
-                Member
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <button class="btn btn-primary">Apply</button>
-        <br>
-        <br>
-        </fieldset>
-        <table class="table" id="mydatatable">
-          <thead>
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Name</th>
-              <th scope="col">Member</th>
-              <th scope="col">Actions</th>
-            </tr>
+      <!-- ============= table ================= -->
+      <br><br><br>
+      <table class="table table-striped">
+          <thead style="border-bottom: none">
+              <tr>
+                  <% if(projectoption.oid){%><th scope="col-sm-10" class="ID">ID</th><%}%>
+                      <% if(projectoption.oname){%><th scope="col-sm-10" class="Name">Name</th><%}%>
+                      <% if(projectoption.omember){%><th scope="col-sm-10" class="Member">Members</th><%}%>
+                  <th scope="col-sm-10" class="Action">Action</th>
+              </tr>
           </thead>
           <tbody>
-            <% data.forEach((item) => {%>
-            <tr>
-              %><td scope="row" class="ID">
-                <a href="/projects/overview/<%= item.projectid%>"><%= item.projectid %> </a> </td>%>
-              <td><%= item.name %></td>
-              <td><%= item.firstname %> <%=item.lastname%></td>
+                  <% data.forEach((item) => {  %>
+              <tr>
+                  <% if(projectoption.oid){%><td scope="row" class="ID"><%}%>
+                      <a href="/projects/overview/<%= item.projectid%>"><%= item.projectid %> </a> </td><%}%>
+                          <% if(projectoption.oname){%> <td class="Name"><%= item.name %></td><%}%>
+                          <% if(projectoption.omember){%><td><%= item.firstname %> <%=item.lastname%></td><%}%>
               <td><a href="/projects/edit/<%= item.projectid %>" class="btn btn-success">Edit</a>
                 <a href="/projects/delete/<%= item.projectid %>" class="btn btn-danger"
                   onclick="return confirm('Yakin nih mau di Delete bro???');">Delete</a></td>

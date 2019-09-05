@@ -1,17 +1,16 @@
-
-var express = require('express');
-var router = express.Router();
-var helpers = require ('../helpers/utility')
+const express = require('express');
+const router = express.Router();
+const helpers = require ('../helpers/utility')
 
 module.exports = function (db) {
 
   // ========== LOGIN ==========
  
-  router.get('/', function (req, res, next) {
+  router.get('/',  (req, res, next) => {
     res.render('login', { loginMessage: req.flash('loginMessage') });
   });
  
-  router.post('/', function (req, res, next) {
+  router.post('/', (req, res, next) => {
  
     let emails = req.body.email;
     let passwords = req.body.password;
